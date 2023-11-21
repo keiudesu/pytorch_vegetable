@@ -76,16 +76,15 @@ def main():
     st.sidebar.write(device)
     st.sidebar.title("野菜の画像認識アプリ")
     st.sidebar.write("画像認識モデルを使って野菜の種類を判定します。")
+    st.sidebar.write("（注：ブロッコリー、人参、キャベツ、大根、トマト）")
     st.sidebar.write("判別が可能な種類は以下の通りです。")
 
     st.sidebar.write("")
 
-    img_source = st.sidebar.radio("画像のソースを選択してください",
-                                  ("画像をアップロード", "画像を撮影"))
+    st.sidebar.write("画像のソースを選択してください")
     #サイドバーの表示
     image = st.sidebar.file_uploader("画像をアップロードしてください", type=['jpg','jpeg', 'png'])
 
-    #サンプル画像を使用する場合
     #保存済みのモデルをロード
     model = CNN()
     model.load_state_dict(torch.load("cnn-99.model", map_location=device))
